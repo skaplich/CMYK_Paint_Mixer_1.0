@@ -1,0 +1,29 @@
+Objectives:
+
+Begin integrating the RGB sensor with Arduino Uno.
+
+Test sensor accuracy under different lighting conditions.
+
+Record of Activities:
+
+Connected TCS34725 RGB sensor to Arduino Uno using I2C interface.
+
+Tested sensor with various color samples and recorded RGB values.
+
+Observed ambient lighting causing inaccuracies (~±10%).
+
+Shielded the sensor to minimize light interference, improving accuracy to within ±5%.
+
+Data/Results:
+
+Example readings:
+
+Red: Measured (200, 50, 50), Detected (198, 52, 49).
+
+Green: Measured (50, 200, 50), Detected (49, 198, 51).
+
+Debugging Notes:
+
+Issue: High variance in readings due to ambient light.
+
+Resolution: Added physical shielding to the sensor.
