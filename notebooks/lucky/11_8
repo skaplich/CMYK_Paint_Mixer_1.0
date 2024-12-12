@@ -1,3 +1,5 @@
+Date: November 8, 2024
+
 Objectives:
 
 Integrate sensor and pump subsystems.
@@ -14,7 +16,7 @@ Conducted full system test for Red (RGB: 200, 50, 50).
 
 Results:
 
-Color Match Accuracy: ΔE = 4.2 (within tolerance).
+Color Match Accuracy: ΔE = 4.2 (within tolerance). RGB Color Sensor Accuracy Color Measured RGB (Reference) Detected RGB (Sensor) % Error (R, G, B) Within ±5%? Red (200, 50, 50) (198, 52, 49) (1.0%, 4.0%, 2.0%) Yes Green (50, 200, 50) (49, 198, 51) (2.0%, 1.0%, 2.0%) Yes Blue (50, 50, 200) (51, 52, 198) (2.0%, 4.0%, 1.0%) Yes Yellow (200, 200, 50) (198, 199, 49) (1.0%, 0.5%, 2.0%) Yes Cyan (50, 200, 200) (52, 198, 199) (4.0%, 1.0%, 0.5%) Yes
 
 Debugging Notes:
 
