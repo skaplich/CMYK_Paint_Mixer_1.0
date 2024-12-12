@@ -18,7 +18,7 @@ Data/Results:
 
 Flow rate: 10 mL/sec at 100% PWM.
 
-Dispensing error: ±2.5 mL for 100 mL batches.
+Dispensing error: ±2.5 mL for 100 mL batches. Peristaltic Pump Accuracy Trial Target Volume (mL) Measured Volume (mL) Within Requirement? 1 50 49.2 Yes 2 50 50.1 Yes 3 50 48.8 Yes 4 50 49.7 Yes 5 50 47.3 No
 
 Design Adjustments:
 
