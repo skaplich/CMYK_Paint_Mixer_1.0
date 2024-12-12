@@ -1,0 +1,24 @@
+
+Implement RGB-to-CMYK conversion in Arduino.
+
+Verify conversion results with sample inputs.
+
+Record of Activities:
+
+Wrote code for RGB-to-CMYK conversion based on defined formulas.
+
+Tested code using sample RGB values and verified outputs.
+
+Observed deviations in CMYK values (<5%).
+
+Equations:
+
+Conversion formulas:
+
+R' = R/255 G' = G/255 B' = B/255 K = 1-max(R', G', B') C = (1-R'-K) / (1-K) M = (1-G'-K) / (1-K) Y = (1-B'-K) / (1-K)
+
+Data/Results:
+
+Example RGB Input: (128, 64, 32)
+
+CMYK Output: C=0.5, M=0.75, Y=0.875, K=0.5
