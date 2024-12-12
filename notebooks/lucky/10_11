@@ -1,0 +1,22 @@
+Objectives:
+
+Research RGB sensors and select the most suitable model for color detection.
+
+Finalize key components for procurement.
+
+Record of Activities:
+
+Evaluated RGB sensors (Adafruit AS7262 and TCS34725).
+
+Selected TCS34725 due to high accuracy, built-in IR filter, and white LED.
+
+Discussed with team members about the initial wiring setup.
+
+Ordered TCS34725 RGB sensor and Arduino Uno for integration testing.
+
+Design Notes:
+
+Ensured compatibility between RGB sensor and Arduino Uno (I2C communication).
+
+Decision made to use peristaltic pumps for paint dispensing based on fluid handling capabilities.
+
