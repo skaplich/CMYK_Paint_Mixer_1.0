@@ -1,0 +1,23 @@
+Objectives:
+
+Integrate sensor and pump subsystems.
+
+Perform end-to-end testing.
+
+Record of Activities:
+
+Connected RGB sensor and pumps to Arduino Uno.
+
+Scanned sample colors and verified corresponding paint proportions dispensed.
+
+Conducted full system test for Red (RGB: 200, 50, 50).
+
+Results:
+
+Color Match Accuracy: ΔE = 4.2 (within tolerance).
+
+Debugging Notes:
+
+Issue: Delay in signal processing.
+
+Resolution: Optimized code to reduce processing time to 85 ms.
