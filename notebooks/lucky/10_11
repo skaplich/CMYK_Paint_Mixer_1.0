@@ -8,11 +8,11 @@ Record of Activities:
 
 Evaluated RGB sensors (Adafruit AS7262 and TCS34725).
 
-Selected TCS34725 due to high accuracy, built-in IR filter, and white LED.
+Selected AS7262 due to high accuracy, built-in IR filter, and white LED.
 
 Discussed with team members about the initial wiring setup.
 
-Ordered TCS34725 RGB sensor and Arduino Uno for integration testing.
+Ordered RGB sensor and Arduino Uno for integration testing.
 
 Design Notes:
 
