@@ -1,4 +1,3 @@
-Objectives:
 
 Implement RGB-to-CMYK conversion in Arduino.
 
@@ -15,6 +14,8 @@ Observed deviations in CMYK values (<5%).
 Equations:
 
 Conversion formulas:
+
+R' = R/255 G' = G/255 B' = B/255 K = 1-max(R', G', B') C = (1-R'-K) / (1-K) M = (1-G'-K) / (1-K) Y = (1-B'-K) / (1-K)
 
 Data/Results:
 
