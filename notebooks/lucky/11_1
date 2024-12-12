@@ -1,0 +1,27 @@
+Date: November 1, 2024
+
+Objectives:
+
+Begin calibration of peristaltic pumps.
+
+Test dispensing accuracy for fluid acrylics.
+
+Record of Activities:
+
+Set up peristaltic pumps with motor driver circuits.
+
+Measured paint volumes dispensed over fixed durations.
+
+Noted inconsistencies at low PWM duty cycles.
+
+Data/Results:
+
+Flow rate: 10 mL/sec at 100% PWM.
+
+Dispensing error: ±2.5 mL for 100 mL batches.
+
+Design Adjustments:
+
+Adjusted motor control algorithm to account for non-linearity.
+
+Decided to switch to fluid acrylics to mitigate viscosity issues.
