@@ -304,3 +304,13 @@ Describe the process of controlling the motor (how to determine the PWM, and the
 
 Started Board layout: 
 ![Image]([http://url/a.png](https://github.com/skaplich/CMYK_Paint_Mixer_1.0/blob/main/Photos/sc.png))	
+
+
+________________________________________________________________________________________________
+
+10/16/24
+
+final PCB is complete, we need to solder it and test it. 
+
+Right now Lucky is responsible for ordering all the parts so I need to talk to him about making orders.
+
