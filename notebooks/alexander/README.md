@@ -314,3 +314,203 @@ final PCB is complete, we need to solder it and test it.
 
 Right now Lucky is responsible for ordering all the parts so I need to talk to him about making orders.
 
+________________________________________________________________________________________________
+
+12/2/24
+
+Final Code for the Demo
+
+```
+void loop() {
+ 
+  offButtonState = digitalRead(PD2);
+
+
+  if (offButtonState) {
+
+    digitalWrite(PD7, LOW);
+
+    ams.drvOn(); //uncomment this if you want to use the driver LED for readings
+
+    ams.startMeasurement();  //begin a measurement
+
+    //wait till data is available
+    bool rdy = false;
+    while (!rdy) {
+      delay(5);
+      rdy = ams.dataReady();
+    }
+    ams.drvOff();  //uncomment this if you want to use the driver LED for readings
+
+    //read the values!
+    ams.readRawValues(sensorValues);
+
+    int rval = ((sensorValues[AS726x_RED] / 5500.00) * 255.00);
+    int gval = ((sensorValues[AS726x_GREEN] / 10500.00) * 255.00);
+    int bval = ((sensorValues[AS726x_BLUE] / 12000.00) * 255.00);
+
+    if (rval > 255) {
+      rval = 255;
+    }
+    if (bval > 255) {
+      bval = 255;
+    }
+    if (gval > 255) {
+      gval = 255;
+    }
+
+    Serial.print("red :");
+    Serial.println(rval);
+    Serial.println(sensorValues[AS726x_RED]);
+    Serial.print("green : ");
+    Serial.println(gval);
+    Serial.println(sensorValues[AS726x_GREEN]);
+    Serial.print("blue : ");
+    Serial.println(bval);
+    Serial.println(sensorValues[AS726x_BLUE]);
+
+    float R_prime = rval / 255.0;
+    float G_prime = gval / 255.0;
+    float B_prime = bval / 255.0;
+
+    // Calculate K (Key)
+    float K = 1 - max(max(R_prime, G_prime), B_prime);
+
+    // Avoid division by zero when K == 1
+    float C = (K < 1) ? (1 - R_prime - K) / (1 - K) : 0;
+    float M = (K < 1) ? (1 - G_prime - K) / (1 - K) : 0;
+    float Y = (K < 1) ? (1 - B_prime - K) / (1 - K) : 0;
+
+    float white = 100;
+
+    float cyan = C * white;
+    float magenta = M * white;
+    float yellow = Y * white;
+    float black = K * white;
+
+    float mlstep = (226935-25500)/40;
+    float tube = 25500;
+
+    float cyan_motorstep = (cyan / 25) * mlstep;
+    float magenta_motorstep = (magenta / 25) * mlstep;
+    float yellow_motorstep = (yellow / 25) * mlstep;
+    float black_motorstep = (black / 25) * mlstep;
+
+    Serial.println(cyan_motorstep);
+    Serial.println(magenta_motorstep);
+    Serial.println(yellow_motorstep);
+    Serial.println(black_motorstep);
+
+   
+
+  if(cyan_motorstep > 0.00){
+
+  
+    for (long i = 0; i < (long)((tube * 1.25)+cyan_motorstep); i++) {
+      digitalWrite(PD6, HIGH);
+      //digitalWrite(PD4, HIGH);
+      delayMicroseconds(100);
+      digitalWrite(PD6, LOW);
+      //digitalWrite(PD4, LOW);
+      delayMicroseconds(100);
+    }
+  }
+    
+    Serial.println("cyan complete");
+
+    if(magenta_motorstep > 0.00){
+
+      for (long i = 0; i < (long)((tube * 1.25)+magenta_motorstep); i++) {
+        digitalWrite(PD4, HIGH);
+        //digitalWrite(PD4, HIGH);
+        delayMicroseconds(100);
+        digitalWrite(PD4, LOW);
+        //digitalWrite(PD4, LOW);
+        delayMicroseconds(100);
+      }
+    }
+    Serial.println("magenta complete");
+
+
+    if(yellow_motorstep > 0.00){
+
+    
+      for (long i = 0; i < (long)((tube * 1.25)+yellow_motorstep); i++) {
+        digitalWrite(A3, HIGH);
+        //digitalWrite(PD4, HIGH);
+        delayMicroseconds(100);
+        digitalWrite(A3, LOW);
+        //digitalWrite(PD4, LOW);
+        delayMicroseconds(100);
+      }
+    }
+
+    Serial.println("yellow complete");
+
+    if(black_motorstep > 0.00){
+
+      for (long i = 0; i < (long)((tube * 1.25)+black_motorstep); i++) {
+        digitalWrite(A1, HIGH);
+        //digitalWrite(PD4, HIGH);
+        delayMicroseconds(100);
+        digitalWrite(A1, LOW);
+        //digitalWrite(PD4, LOW);
+        delayMicroseconds(100);
+      }
+
+    }
+    Serial.println("black complete");
+
+    delay(1000);
+
+    digitalWrite(A0, LOW);
+
+    digitalWrite(PD5, LOW);  //dir motor 1
+
+    digitalWrite(PD3, LOW);  //dir motor 2
+
+    digitalWrite(A2, LOW);
+
+    delay(1000);
+
+    for(long i = 0; i<long((tube*1.25)+1000); i++)
+    {
+          
+
+          digitalWrite(PD6, HIGH);
+
+          digitalWrite(PD4, HIGH);
+
+          digitalWrite(A3, HIGH);
+          
+          digitalWrite(A1, HIGH);
+
+          delayMicroseconds(100);
+
+          digitalWrite(PD6, LOW);
+
+          digitalWrite(PD4, LOW);
+
+          digitalWrite(A3, LOW);
+
+          digitalWrite(A1, LOW);
+
+          delayMicroseconds(100);
+
+          counter++;
+          flag = 1;
+    }
+
+
+  digitalWrite(PD5, HIGH);  // dir
+
+  digitalWrite(PD3, HIGH);  // dir
+
+  digitalWrite(A0, HIGH);
+
+  digitalWrite(A2, HIGH);
+
+  digitalWrite(PD7, HIGH);
+  
+  }
+```
